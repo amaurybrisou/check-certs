@@ -1,0 +1,15 @@
+version: "3"
+networks:
+  gw_internal:
+    external: true
+
+services:
+  backend:
+    platform: linux/amd64
+    image: ${IMAGE_URL}
+    env_file:
+      - .env
+    ports:
+      - "${HTTP_SERVER_ADDR}:${HTTP_SERVER_PORT}:${HTTP_SERVER_PORT}"
+    networks:
+      - gw_internal
